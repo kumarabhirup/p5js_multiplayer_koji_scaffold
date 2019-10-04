@@ -1,10 +1,10 @@
 {
   "strings": {
     "fontFamily": "https://fonts.googleapis.com/css?family=Lilita+One",
-    "title": "p5js Scaffold",
-    "desktop_instructions1": "Just a scaffold",
-    "desktop_instructions2": "Thanks to @Svarog and @diddy",
-    "desktop_instructions3": "For their boilerplate code",
+    "title": "p5js Multiplayer Scaffold",
+    "desktop_instructions1": "Just a scaffold, using koji-dispatch",
+    "desktop_instructions2": "Thanks to @Svarog",
+    "desktop_instructions3": "For his koji-dispatch boilerplate code",
     "mobile_instructions1": "Just a scaffold",
     "mobile_instructions2": "Thanks to @Svarog and @diddy",
     "mobile_instructions3": "For their boilerplate code",

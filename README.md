@@ -1,6 +1,6 @@
-# `📦 p5.js Scaffold`
+# `📦 p5.js Multiplayer Scaffold`
 
-Start your day with some p5.js juice!
+Start your day with some multiplayer gaming p5.js juice!
 
 ## 😃 Getting Started
 
@@ -12,7 +12,7 @@ Feel free to modify anything, upgrade the game, add more stuff!
 
 ## 💥 About The Game
 
-Write about your game here.
+This is a multiplayer game scaffold that uses `@withkoji/dispatch`.
 
 ## ⚒️ Customizations
 
@@ -57,25 +57,7 @@ window.setScore(score)
 window.setAppView('setScore')
 ```
 
-### For using the `starter-template-react` branch
-
-- Remix the p5.js Scaffold
-
-- Run the following commands in the terminal
-
-```bash
-$ git checkout starter-template-react
-$ git merge --strategy=ours master
-$ git checkout master
-$ git merge starter-template-react
-$ git commit -m "The Mega Merge"
-$ git branch -d starter-template-react
-$ git push origin master
-```
-
-- If something doesn't work after following these steps, kill all processes and do `$ npm i` in both the `frontend` and `backend` directories.
-
-- Then start both the containers again. Take a look at `package.json` to see what command starts the dev server.
+Similarly, the app view can be set to `game`, `mainMenu` and so on.
 
 ### Develop locally
 
@@ -132,6 +114,22 @@ $ git push github master # <- only if you also maintain a GitHub Repository
 
 - To officially deploy your project, you can **Publish the project using the Koji GUI**.
 
+## 🤙 Wanna contribute❓
+
+Just shoot a Pull Request at [the official GitHub repository of this game 📦](https://github.com/KumarAbhirup/p5js_multiplayer_koji_scaffold)
+
+Or follow me and DM on [Twitter @kumar_abhirup](https://twitter.com/kumar_abhirup) 🙌
+
+Or hit me up on Koji's official Discord server, username: kumar_abhirup 🌱
+
+## 📝 Licence
+
+**GPL © [Kumar Abhirup](https://kumar.now.sh)**
+
+_Follow me 👋 **on Twitter**_ →   [![Twitter](https://img.shields.io/twitter/follow/kumar_abhirup.svg?style=social&label=@kumar_abhirup)](https://twitter.com/kumar_abhirup)
+
 ## Credits for assets
 
-Put your assets credit here.
+OpenGameArt 👉 [https://opengameart.org](https://opengameart.org)
+
+If you see your assets being used without your permission, DM me for getting credited or remove the asset altogether!
