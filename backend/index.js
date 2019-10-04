@@ -14,10 +14,13 @@
  *   to do it.
  */
 
+require('dotenv').config({ path: '../.env' })
+
 import 'babel-polyfill'
 import express from 'express'
 import * as fs from 'fs'
 import bodyParser from 'body-parser'
+import kojiLeaderboardApi from 'koji-leaderboard-api'
 
 const app = express()
 
@@ -30,7 +33,7 @@ app.use(bodyParser.urlencoded({
 
 // CORS
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Origin', '*') // use '*' as second param to allow any client to hack in
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Jiro-Request-Tag')
   next()
 })
@@ -108,6 +111,9 @@ Object.keys(backendConfig).forEach((routeName) => {
     })
   }
 })
+
+// routes
+kojiLeaderboardApi(app)
 
 app.listen(process.env.PORT || 3333, null, async err => {
     if (err) {
