@@ -8,6 +8,9 @@
     "mobile_instructions1": "Just a scaffold",
     "mobile_instructions2": "Thanks to @Svarog and @diddy",
     "mobile_instructions3": "For their boilerplate code",
+    "defaultRoomName": "Koji",
+    "defaultPlayerName": "Kumar Abhirup",
+    "maxConnectionsPerShard": "2",
     "lives": "3",
     "minimumScoreToSave": "1",
     "enableCursor": true,
@@ -70,6 +73,24 @@
       {
         "key": "mobile_instructions3",
         "name": "Mobile Game Instructions 3",
+        "type": "text"
+      },
+      {
+        "key": "defaultRoomName",
+        "name": "Default Room Name",
+        "description": "Default room name that appears in the main menu.",
+        "type": "text"
+      },
+      {
+        "key": "defaultPlayerName",
+        "name": "Default Player Name",
+        "description": "Default player name that appears in the main menu.",
+        "type": "text"
+      },
+      {
+        "key": "maxConnectionsPerShard",
+        "name": "Max Connections per Shard",
+        "description": "Maximum possible number of players allowed to join one room.",
         "type": "text"
       },
       {
