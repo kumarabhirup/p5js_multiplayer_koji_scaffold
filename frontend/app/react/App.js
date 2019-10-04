@@ -3,13 +3,14 @@
 import React, { Component } from 'react'
 
 import GameContainer from './GameContainer'
+import MainMenu from './MainMenu'
 import Leaderboard from './Leaderboard'
 import SetScore from './SetScore'
 
 export default class App extends Component {
   state = {
     score: 0,
-    view: 'game',
+    view: 'mainMenu',
   }
 
   componentDidMount() {
@@ -42,6 +43,14 @@ export default class App extends Component {
       return (
         <div>
           <Leaderboard />
+        </div>
+      )
+    }
+
+    if (this.state.view === 'mainMenu') {
+      return (
+        <div>
+          <MainMenu />
         </div>
       )
     }

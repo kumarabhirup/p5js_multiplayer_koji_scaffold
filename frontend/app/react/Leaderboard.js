@@ -26,8 +26,8 @@ class Leaderboard extends Component {
                   <div>Error!</div>
 
                   {/* eslint-disable-next-line react/button-has-type */}
-                  <button onClick={() => window.setAppView('game')}>
-                    {'Back to Game'}
+                  <button onClick={() => window.setAppView('mainMenu')}>
+                    Back to Game
                   </button>
                 </div>
               </div>
@@ -46,7 +46,7 @@ class Leaderboard extends Component {
                       className="leaderboard-title-text"
                       style={{ color: Koji.config.colors.titleColor }}
                     >
-                      {'Top Scores'}
+                      Top Scores
                     </div>
                     <div
                       className="leaderboard-close-button"
@@ -55,7 +55,7 @@ class Leaderboard extends Component {
                       }}
                       style={{ color: Koji.config.colors.titleColor }}
                     >
-                      {'Close'}
+                      Close
                     </div>
                   </div>
                   <div className="leaderboard-contents">
