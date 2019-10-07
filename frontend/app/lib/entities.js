@@ -162,3 +162,75 @@ class Particle extends Entity {
     }
   }
 }
+
+/* Game Message that helps for chatting and notifications */
+class GameMessage {
+  constructor(txt, color) {
+    this.txt = txt
+    this.duration = Koji.config.strings.messageDuration
+    this.timer = this.duration
+    this.removable = false
+    this.alpha = 1
+    this.maxSize = objSize * 0.85
+    this.size = 0.1
+
+    if (color) {
+      this.color = color
+    } else {
+      this.color = Koji.config.colors.defaultMessageColor
+    }
+
+    this.pos = createVector(objSize * 0.75, 0)
+    this.goalPos = createVector(this.pos.x, this.pos.y)
+    this.isFirst = false
+
+    this.offsetY = objSize * 2
+
+    this.animTimer = 0
+  }
+
+  update() {
+    if (this.isFirst) {
+      this.timer -= 1 / frameRate()
+    }
+
+    if (this.timer <= this.duration / 2) {
+      this.alpha = this.timer / (this.duration / 2)
+    }
+
+    const animSpeed = 4
+    if (this.animTimer < 1) {
+      this.animTimer += (1 / frameRate()) * animSpeed
+    }
+
+    this.size = EaseNew(
+      EasingFunctions.outBack,
+      this.animTimer,
+      0,
+      this.maxSize,
+      animSpeed
+    )
+
+    this.pos.x = Smooth(this.pos.x, this.goalPos.x, 8)
+    this.pos.y = Smooth(this.pos.y, this.goalPos.y, 8)
+
+    if (this.timer <= 0.1) {
+      this.removable = true
+    }
+  }
+
+  render() {
+    push()
+    textSize(this.size)
+
+    fill(
+      `rgba(${red(this.color)},${green(this.color)},${blue(this.color)},${
+        this.alpha
+      })`
+    )
+
+    textAlign(LEFT, TOP)
+    text(this.txt, this.pos.x, this.offsetY + this.pos.y)
+    pop()
+  }
+}
