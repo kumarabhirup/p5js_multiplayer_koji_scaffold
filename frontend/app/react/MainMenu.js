@@ -53,7 +53,7 @@ class MainMenu extends Component {
       //
     }
 
-    let roomName = Koji.config.strings.defaultRoomName
+    let roomName = Koji.config.strings.defaultRoomName.toLowerCase()
     if (localStorage.getItem('roomName')) {
       roomName = localStorage.getItem('roomName')
     }
@@ -99,7 +99,7 @@ class MainMenu extends Component {
   }
 
   startGame() {
-    localStorage.setItem('roomName', this.state.roomName)
+    localStorage.setItem('roomName', this.state.roomName.toLowerCase())
     localStorage.setItem('playerName', this.state.playerName)
 
     window.setAppView('game')
