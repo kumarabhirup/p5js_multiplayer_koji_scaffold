@@ -30,6 +30,7 @@ function drawTimer() {
   if (timerMinutes < 10) {
     timerMinutes = `0${timerMinutes}`
   }
+
   if (timerSeconds < 10) {
     timerSeconds = `0${timerSeconds}`
   }

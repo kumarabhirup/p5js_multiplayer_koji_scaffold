@@ -37,7 +37,7 @@ class SetScore extends Component {
   }
 
   handleClose = () => {
-    window.setAppView('game')
+    window.setAppView('mainMenu')
   }
 
   handleSubmit = async (e, saveData) => {
@@ -76,7 +76,7 @@ class SetScore extends Component {
               className="title"
               style={{ color: Koji.config.colors.titleColor }}
             >
-              {'Submit To Leaderboard'}
+              Submit To Leaderboard
             </div>
 
             <div
@@ -92,7 +92,7 @@ class SetScore extends Component {
                     className="label"
                     style={{ color: Koji.config.colors.titleColor }}
                   >
-                    {'Score'}
+                    Score
                   </label>
                   <input
                     disabled
@@ -109,7 +109,7 @@ class SetScore extends Component {
                     className="label"
                     style={{ color: Koji.config.colors.titleColor }}
                   >
-                    {'Name'}
+                    Name
                   </label>
                   <input
                     onChange={event => {
@@ -130,7 +130,7 @@ class SetScore extends Component {
                 {Koji.config.strings.emailInputEnabled ? (
                   <div className="input-wrapper">
                     <label style={{ color: Koji.config.colors.titleColor }}>
-                      {'Your Email Address (Private)'}
+                      Your Email Address (Private)
                     </label>
                     <input
                       onChange={event => {
@@ -179,7 +179,7 @@ class SetScore extends Component {
                   color: Koji.config.colors.buttonTextColor,
                 }}
               >
-                {'Cancel'}
+                Cancel
               </button>
             </div>
           </div>

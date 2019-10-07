@@ -14,8 +14,8 @@
     "lives": "3",
     "minimumScoreToSave": "1",
     "enableCursor": true,
-    "enableTimer": true,
-    "gameTimer": "10",
+    "enableTimer": false,
+    "gameTimer": "1000",
     "playButtonText": "PLAY NOW",
     "leaderboardButtonText": "LEADERBOARD",
     "endButtonText": "END GAME",
@@ -26,7 +26,7 @@
     "scoreText": "Score:",
     "highscoreText": "High Score:",
     "highscoreGainedText": "New High Score!",
-    "trialTesting": false
+    "trialTesting": true
   },
   "@@editor": [{
     "key": "strings",

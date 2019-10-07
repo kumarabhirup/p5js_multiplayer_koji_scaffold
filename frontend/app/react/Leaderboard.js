@@ -51,7 +51,7 @@ class Leaderboard extends Component {
                     <div
                       className="leaderboard-close-button"
                       onClick={() => {
-                        window.setAppView('game')
+                        window.setAppView('mainMenu')
                       }}
                       style={{ color: Koji.config.colors.titleColor }}
                     >

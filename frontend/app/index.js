@@ -7,12 +7,13 @@
 // Strict Stuffs (EDITING THESE WILL MAKE GAME CRASH)
 let myFont // The font we'll use throughout the app
 
-let gameOver = false // If it's true the game will render the main menu
-let gameBeginning = true // Should be true only before the user starts the game for the first time
+let gameOver = false
+let gameBeginning = false
 
 let gameStart = false // Becomes true after a moment when game initializes
-
 let canEnd = false
+
+let users = []
 
 // Effects
 let floatingTexts = []
@@ -21,8 +22,12 @@ let particles = []
 // Game Objects (READ-ONLY)
 
 // Game Stuffs (READ-N-WRITE)
+
+// Koji-Dispatch specific
 let dispatch
 let dispatchEvent
+let dataInterval
+let dataSendPeriod = 32
 
 // Buttons
 let playButton
@@ -166,9 +171,9 @@ function setup() {
   leaderboardButton = new LeaderboardButton()
   endButton = new EndButton()
 
-  instantiate()
+  init()
 
-  gameBeginning = true
+  gameBeginning = false
 
   /**
    * Load music asynchronously and play once it's loaded
@@ -200,7 +205,7 @@ function draw() {
 
   // Draw UI
   if (gameOver || gameBeginning) {
-    gameBeginningOver()
+    window.setAppView('mainMenu')
   } else {
     gamePlay()
   }
