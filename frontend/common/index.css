@@ -99,6 +99,7 @@ code {
   align-content: flex-start;
   align-items: center;
   text-align: center;
+  margin-top: -20px;
 }
 
 .play-button {
@@ -120,6 +121,7 @@ code {
 .title {
   font-size: 10vmin;
   overflow: wrap;
+  zoom: 1.2;
 }
 
 .instructions {
@@ -128,6 +130,7 @@ code {
   text-align: center;
   padding-right: 2vmin;
   padding-left: 2vmin;
+  zoom: 1.1;
 }
 
 .main-menu-form {
@@ -135,6 +138,7 @@ code {
 }
 
 .main-menu-input-wrapper {
+  zoom: 0.85;
   margin-top: -100px;
   display: flex;
   flex-direction: column;
@@ -156,7 +160,6 @@ code {
   margin-bottom: 5vmin;
 
   margin: 1vmin;
-
 }
 
 .main-menu-input-label {
@@ -210,6 +213,7 @@ code {
   border-radius: 1vmin;
 
   margin: 1vmin;
+  zoom: 0.9;
 }
 
 .main-menu-button:hover {
