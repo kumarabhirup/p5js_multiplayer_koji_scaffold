@@ -19,7 +19,6 @@ import App from '../app/react/App'
 import './index.css'
 import './leaderboardStyles.css'
 
-Koji.pageLoad()
 window.Koji = Koji
 
 const render = Component => {

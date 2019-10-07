@@ -1,6 +1,6 @@
 {
   "strings": {
-    "fontFamily": "https://fonts.googleapis.com/css?family=Lilita+One",
+    "fontFamily": "https://fonts.googleapis.com/css?family=Viga&display=swap",
     "title": "p5js Multiplayer Scaffold",
     "desktop_instructions1": "Just a scaffold, using koji-dispatch",
     "desktop_instructions2": "Thanks to @Svarog",
