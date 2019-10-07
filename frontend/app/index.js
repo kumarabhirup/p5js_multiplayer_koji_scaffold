@@ -91,7 +91,6 @@ let touching = false // Whether the user is currently touching/clicking
 // Multiplayer stuffs
 let gameStatusText = ''
 let roomName = ''
-
 let gameMessages = []
 
 // Load assets
@@ -106,8 +105,8 @@ function preload() {
   myFont = newStr
 
   // Load background if there's any
-  if (Koji.config.images.background !== '') {
-    imgBackground = loadImage(Koji.config.images.background)
+  if (Koji.config.images.backgroundInGame !== '') {
+    imgBackground = loadImage(Koji.config.images.backgroundInGame)
   }
 
   // Load images
