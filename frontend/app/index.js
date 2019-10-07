@@ -420,6 +420,13 @@ function cleanup() {
   if (gameMessages.length > Koji.config.strings.maxGameMessages) {
     gameMessages.splice(0, 1)
   }
+
+  // Clean Particles
+  for (let i = 0; i < particles.length; i++) {
+    if (particles[i].timer <= 0) {
+      particles.splice(i, 1)
+    }
+  }
 }
 
 // Call this when a lose life event should trigger
