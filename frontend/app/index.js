@@ -138,10 +138,8 @@ function preload() {
   // Timer stuff
   if (startingGameTimer <= 0) {
     gameTimer = 99999
-    gameTimerEnabled = false
   } else {
     gameTimer = startingGameTimer
-    gameTimerEnabled = true
   }
 }
 
