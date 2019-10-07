@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
@@ -20,6 +21,8 @@ let particles = []
 // Game Objects (READ-ONLY)
 
 // Game Stuffs (READ-N-WRITE)
+let dispatch
+let dispatchEvent
 
 // Buttons
 let playButton
@@ -327,6 +330,11 @@ function keyPressed() {
       }
     }
   }
+
+  // After quitting
+  if (keyCode === ESCAPE) {
+    exit()
+  }
 }
 
 function keyReleased() {
@@ -373,4 +381,14 @@ function init() {
     score = 0
     gameStart = true
   }, 1000)
+}
+
+function exit() {
+  gameOver = true
+
+  if (score > parseInt(Koji.config.strings.minimumScoreToSave)) {
+    submitScore(score)
+  } else {
+    window.setAppView('mainMenu')
+  }
 }
