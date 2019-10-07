@@ -82,16 +82,15 @@ const EasingFunctions = {
     )
   },
 
+  // for awesome bounce effects
   inBack(t) {
     const s = 1.70158
     return t * t * ((s + 1) * t - s)
   },
-
   outBack(t) {
     const s = 1.70158
     return --t * t * ((s + 1) * t + s) + 1
   },
-
   outBounce(t) {
     if (t < 1 / 2.75) {
       return 7.5625 * t * t
@@ -104,7 +103,6 @@ const EasingFunctions = {
     }
     return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375
   },
-
   inOutElastic(t) {
     let s
     let a = 0.1
@@ -154,6 +152,7 @@ function Ease(func, time, start, finish, duration) {
   return (-finish / 2) * (--time * (time - 2) - 1) + start
 }
 
+// New Easing function by @Svarog used for GameMessages
 function EaseNew(func, time, start, finish, duration) {
   let t = time
   if (time > 1) {
@@ -162,6 +161,7 @@ function EaseNew(func, time, start, finish, duration) {
   return finish * func(t) + start
 }
 
+// Bezier Effect
 function Bezier(t, p0, p1) {
   return p0 + t * (p1 - p0)
 }

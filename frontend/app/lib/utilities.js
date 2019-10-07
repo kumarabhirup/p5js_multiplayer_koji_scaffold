@@ -76,7 +76,8 @@ function particlesEffect(
   }
 }
 
-function spawnMessage(txt, color) {
+// Spawn multiplayer messages
+function spawnMessage(txt, color = Koji.config.colors.floatingTextColor) {
   const msg = new GameMessage(txt, color)
   msg.pos.y = gameMessages.length * (msg.size + objSize * 0.1)
 
