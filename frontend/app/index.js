@@ -174,6 +174,8 @@ function setup() {
   init()
 
   gameBeginning = false
+  gameOver = false
+  canEnd = false
 
   /**
    * Load music asynchronously and play once it's loaded
@@ -367,16 +369,22 @@ function init() {
   // Keep everyone at their original place
   instantiate()
 
-  floatingTexts.push(
-    new OldFloatingText(
-      width / 2,
-      height / 2 - height * 0.01,
-      Koji.config.strings.gameStartedFloatingText,
-      Koji.config.colors.floatingTextColor,
-      objSize * 1.2,
-      2
-    )
-  )
+  /**
+   * In multiplayer games as of now,
+   * there are initialization bugs with timers and floatingTexts
+   *
+   * @example
+   * floatingTexts.push(
+   *   new OldFloatingText(
+   *     width / 2,
+   *     height / 2 - height * 0.01,
+   *     Koji.config.strings.gameStartedFloatingText,
+   *     Koji.config.colors.floatingTextColor,
+   *     objSize * 1.2,
+   *     2
+   *   )
+   * )
+   */
 
   canScore = false
   canEnd = false
