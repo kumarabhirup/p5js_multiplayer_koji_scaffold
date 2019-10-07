@@ -53,7 +53,7 @@ class MainMenu extends Component {
       //
     }
 
-    let roomName = Koji.config.strings.defaultRoomName.toLowerCase()
+    let roomName = Koji.config.strings.defaultRoomName
     if (localStorage.getItem('roomName')) {
       roomName = localStorage.getItem('roomName')
     }
@@ -167,16 +167,12 @@ class MainMenu extends Component {
                 Name
               </label>
               <input
+                placeholder={Koji.config.strings.defaultPlayerName}
                 onChange={event => {
                   this.setState({
-                    playerName:
-                      event.target.value ||
-                      Koji.config.strings.defaultPlayerName,
+                    playerName: event.target.value,
                   })
-                  localStorage.setItem(
-                    'playerName',
-                    event.target.value || Koji.config.strings.defaultPlayerName
-                  )
+                  localStorage.setItem('playerName', event.target.value)
                 }}
                 type="text"
                 value={this.state.playerName}
@@ -199,12 +195,15 @@ class MainMenu extends Component {
                 Game Room
               </label>
               <input
+                placeholder={Koji.config.strings.defaultRoomName}
                 onChange={event => {
                   this.setState({
-                    roomName:
-                      event.target.value || Koji.config.strings.defaultRoomName,
+                    roomName: event.target.value,
                   })
-                  localStorage.setItem('roomName', event.target.value)
+                  localStorage.setItem(
+                    'roomName',
+                    event.target.value.toLowerCase()
+                  )
                 }}
                 type="text"
                 value={this.state.roomName}

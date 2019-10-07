@@ -43,7 +43,8 @@ class GameContainer extends Component {
     dispatch = new Dispatch({
       projectId: Koji.config.metadata.projectId,
       options: {
-        shardName: roomName, // the name of the shard you want to connect to. if this key is not present, the user will automatically be placed onto a shard
+        shardName:
+          roomName.toLowerCase() || Koji.config.strings.defaultRoomName, // the name of the shard you want to connect to. if this key is not present, the user will automatically be placed onto a shard
         maxConnectionsPerShard: parseInt(
           Koji.config.strings.maxPlayersPerShard
         ), // specify how many users to allow on a shard before it is "full" -- once a shard is full, new users will be added to a new shard unless a different shard is explicity set
