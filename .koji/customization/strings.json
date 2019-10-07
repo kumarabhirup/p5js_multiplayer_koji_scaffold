@@ -13,6 +13,8 @@
     "maxConnectionsPerShard": "2",
     "lives": "3",
     "minimumScoreToSave": "1",
+    "maxGameMessages": "10",
+    "messageDuration": "2",
     "enableCursor": true,
     "enableTimer": false,
     "gameTimer": "1000",
@@ -104,6 +106,28 @@
         "name": "Minimum Score to Save",
         "description": "Minimum score needed for user to save his/her name in Leaderboard.",
         "type": "text"
+      },
+      {
+        "key": "maxGameMessages",
+        "name": "Maximum Game Messages",
+        "description": "Limit the number of game messages here.",
+        "type": "range",
+        "typeOptions": {
+          "min": 1,
+          "max": 50,
+          "step": 1
+        }
+      },
+      {
+        "key": "messageDuration",
+        "name": "Game Message Duration",
+        "description": "Duration of each message in seconds.",
+        "type": "range",
+        "typeOptions": {
+          "min": 0.1,
+          "max": 5,
+          "step": 0.1
+        }
       },
       {
         "key": "enableCursor",

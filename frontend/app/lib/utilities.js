@@ -76,6 +76,13 @@ function particlesEffect(
   }
 }
 
+function spawnMessage(txt, color) {
+  const msg = new GameMessage(txt, color)
+  msg.pos.y = gameMessages.length * (msg.size + objSize * 0.1)
+
+  gameMessages.push(msg)
+}
+
 // Used to go to submit score page
 function submitScore(currentScore) {
   window.setScore(currentScore)

@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
@@ -87,6 +88,12 @@ let isMobile = false // check if it really is mobile
 let isMobileSize = false // check if the browser is mobile size
 let touching = false // Whether the user is currently touching/clicking
 
+// Multiplayer stuffs
+let gameStatusText = ''
+let roomName = ''
+
+let gameMessages = []
+
 // Load assets
 function preload() {
   // Load font from google fonts link provided in game settings
@@ -171,8 +178,6 @@ function setup() {
   leaderboardButton = new LeaderboardButton()
   endButton = new EndButton()
 
-  init()
-
   gameBeginning = false
   gameOver = false
   canEnd = false
@@ -185,6 +190,90 @@ function setup() {
     sndMusic = loadSound(Koji.config.sounds.backgroundMusic, () =>
       playMusic(sndMusic, 0.4, false)
     )
+
+  // Dispatch Events and Streamers
+  dispatch.on(dispatchEvent.CONNECTED, payload => {
+    // console.log(payload)
+  })
+
+  dispatch.on(dispatchEvent.CONNECTED_CLIENTS_CHANGED, data => {
+    // connectedClients is an object of the form { clientId: { userInfo } }
+    users = data.connectedClients
+    handleNewConnection()
+
+    // console.log(users)
+  })
+
+  /**
+   * Example events
+   * @warning Examples are just to show the possibilities. Copy Pasting these examples may or may not work.
+   *
+   * @example
+   * dispatch.on('enemy_update', payload => {
+   *   for (let i = 0; i < enemies.length; i += 1) {
+   *     if (!enemies[i].eaten) {
+   *       if (enemies[i].id === payload.id) {
+   *         enemies[i].goalPos.x = payload.posX
+   *         enemies[i].goalPos.y = payload.posY
+   *         enemies[i].score = payload.score
+   *         enemies[i].name = payload.name
+   *         enemies[i].animTimer = 0
+   *         enemies[i].lastUpdateTimer = 0
+   *         enemies[i].size = payload.size
+   *
+   *         enemies[i].startPos.x = enemies[i].pos.x
+   *         enemies[i].startPos.y = enemies[i].pos.y
+   *         enemies[i].startPos.z = enemies[i].pos.z
+   *
+   *         if (!enemies[i].hasGreeted) {
+   *           enemies[i].greet()
+   *           enemies[i].img = imgPlayer[payload.imgIndex]
+   *         }
+   *       }
+   *     }
+   *   }
+   * })
+   *
+   * @example
+   * dispatch.on('player_eaten', payload => {
+   *   if (dispatch.clientId === payload.eatenID) {
+   *     player.eaten = true
+   *     canEnd = true
+   *     dispatch.disconnect()
+   *     console.log('You got eaten!')
+   *   }
+   *
+   *   let eatMessageType = eatMessages[floor(random() * eatMessages.length)]
+   *
+   *   spawnMessage(
+   *     `${payload.eatenName} ${eatMessageType} ${payload.eaterName}!`,
+   *     Koji.config.colors.playerEat
+   *   )
+   * })
+   */
+
+  /**
+   * Handle disconnect if user exits the whole tab
+   * Not working all the time currently
+   */
+  window.addEventListener('beforeunload', event => {
+    if (dispatch) {
+      dispatch.disconnect()
+      console.log('Dispatch Disconnected')
+    }
+  })
+
+  dispatch.connect()
+
+  if (dataInterval) {
+    clearInterval(dataInterval)
+  }
+
+  dataInterval = setInterval(manageData, dataSendPeriod)
+
+  roomName = localStorage.getItem('roomName')
+
+  init()
 }
 
 // An infinite loop that never ends in p5
@@ -241,15 +330,95 @@ function windowResized() {
 }
 
 /**
+ * Dispatch, Handle new connections, and many more multiplayer stuffs
+ * All the code you see below is just for reference purposes which might not make sense in your game.
+ */
+
+function manageData() {}
+function handleNewConnection() {}
+
+// function manageData() {
+//   try {
+//     dispatch.emitEvent('enemy_update', {
+//       id: dispatch.clientId,
+//       name: dispatch.userInfo.playerName,
+//       posX: Math.floor(player.pos.x),
+//       posY: Math.floor(player.pos.y),
+//       velX: player.velocity.x,
+//       velY: player.velocity.y,
+//       size: player.size,
+//       score,
+//       imgIndex: imgPlayerIndex,
+//     })
+//   } catch (error) {
+//     // console.log(error)
+//   }
+// }
+
+// function handleNewConnection() {
+//   let enemyID = []
+//   for (let i = 0; i < enemies.length; i++) {
+//     enemyID[i] = enemies[i].id
+//   }
+
+//   // eslint-disable-next-line no-restricted-syntax
+//   for (let id in users) {
+//     if (id !== dispatch.clientId) {
+//       if (!enemyID.includes(id)) {
+//         spawnEnemy(id)
+//       }
+//     }
+//   }
+
+//   removeEmptyEnemies()
+// }
+
+// function removeEmptyEnemies() {
+//   for (let i = 0; i < enemies.length; i++) {
+//     let userExists = false
+
+//     // eslint-disable-next-line no-restricted-syntax
+//     for (let user in users) {
+//       if (user == enemies[i].id) {
+//         userExists = true
+//       }
+//     }
+
+//     if (!userExists) {
+//       enemies[i].removable = true
+//     }
+//   }
+// }
+
+// function spawnEnemy(id) {
+//   let enemy = new Enemy(
+//     random(-arenaSize / 2, arenaSize / 2),
+//     random(-arenaSize / 2, arenaSize / 2),
+//     id
+//   )
+//   enemies.push(enemy)
+// }
+
+/**
  * Go through objects and see which ones need to be removed
  * A good practive would be for objects to have a boolean like removable, and here you would go through all objects and remove them if they have removable = true;
  */
 function cleanup() {
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < floatingTexts.length; i++) {
     if (floatingTexts[i].timer <= 0) {
       floatingTexts.splice(i, 1)
     }
+  }
+
+  // Game Messages cleanup
+  for (let i = 0; i < gameMessages.length; i++) {
+    if (gameMessages[i].removable) {
+      gameMessages.splice(i, 1)
+    }
+  }
+
+  if (gameMessages.length > Koji.config.strings.maxGameMessages) {
+    gameMessages.splice(0, 1)
   }
 }
 

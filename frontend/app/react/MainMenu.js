@@ -168,8 +168,15 @@ class MainMenu extends Component {
               </label>
               <input
                 onChange={event => {
-                  this.setState({ playerName: event.target.value })
-                  localStorage.setItem('playerName', event.target.value)
+                  this.setState({
+                    playerName:
+                      event.target.value ||
+                      Koji.config.strings.defaultPlayerName,
+                  })
+                  localStorage.setItem(
+                    'playerName',
+                    event.target.value || Koji.config.strings.defaultPlayerName
+                  )
                 }}
                 type="text"
                 value={this.state.playerName}
@@ -180,6 +187,7 @@ class MainMenu extends Component {
                   fontFamily: `${this.state.font}`,
                 }}
                 className="main-menu-input"
+                required
               />
             </div>
 
@@ -192,7 +200,10 @@ class MainMenu extends Component {
               </label>
               <input
                 onChange={event => {
-                  this.setState({ roomName: event.target.value })
+                  this.setState({
+                    roomName:
+                      event.target.value || Koji.config.strings.defaultRoomName,
+                  })
                   localStorage.setItem('roomName', event.target.value)
                 }}
                 type="text"
@@ -204,14 +215,15 @@ class MainMenu extends Component {
                   fontFamily: `${this.state.font}`,
                 }}
                 className="main-menu-input"
+                required
               />
             </div>
           </div>
 
           <button
             className="main-menu-button"
-            onClick={this.startGame}
             type="submit"
+            onClick={this.startGame}
             style={{
               backgroundColor: Koji.config.colors.buttonColor,
               color: Koji.config.colors.buttonTextColor,
