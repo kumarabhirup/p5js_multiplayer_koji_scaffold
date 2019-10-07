@@ -11,6 +11,10 @@
 import React, { Component } from 'react'
 
 class MainMenu extends Component {
+  background = Koji.config.images.background
+    ? `url(${Koji.config.images.background})`
+    : Koji.config.colors.backgroundColor
+
   constructor(props) {
     super(props)
 
@@ -110,8 +114,9 @@ class MainMenu extends Component {
       <div
         id="main-menu"
         style={{
-          backgroundColor: Koji.config.colors.backgroundColor,
+          background: this.background,
           color: Koji.config.colors.titleColor,
+          backgroundSize: '',
         }}
       >
         <div>
@@ -121,6 +126,8 @@ class MainMenu extends Component {
           >
             {Koji.config.strings.title}
           </div>
+
+          <br />
 
           <div>
             <div

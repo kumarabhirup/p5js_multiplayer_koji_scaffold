@@ -4,6 +4,8 @@
     "muteImage": "https://i.imgur.com/AR7C733.png",
     "lifeIcon": "https://i.imgur.com/39e9e4h.png",
     "background": "",
+    "mainMenuBackgroundSize": "",
+    "backgroundInGame": "https://i.ibb.co/vv5YfqV/clearSky.jpg",
     "player": "https://i.imgur.com/uDTjMb3.png",
     "lifeCollectible": "https://i.imgur.com/XSNfW4m.png",
     "explosion": "https://i.imgur.com/QT2LYN4.png",
@@ -44,6 +46,18 @@
       {
         "key": "background",
         "name": "Background",
+        "description": "Leave empty if you want to use a solid color. Ideal size: any, but keep in mind it could deform based on screen size",
+        "type": "image"
+      },
+      {
+        "key": "mainMenuBackgroundSize",
+        "name": "Main Menu Background Size",
+        "description": "Empty for tiled background. Use CSS background-size properties only. Eg. cover",
+        "type": "image"
+      },
+      {
+        "key": "backgroundInGame",
+        "name": "Background for Gaming Screen",
         "description": "Leave empty if you want to use a solid color. Ideal size: any, but keep in mind it could deform based on screen size",
         "type": "image"
       }
