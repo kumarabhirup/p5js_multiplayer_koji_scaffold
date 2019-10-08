@@ -158,6 +158,7 @@ function instantiate() {
     { radius: 10 },
     { shape: 'circle', color: '#ffff00', id: dispatch.clientId }
   )
+  player.id = dispatch.clientId
 }
 
 // Setup your props
@@ -354,16 +355,17 @@ function removeEmptyEnemies() {
 }
 
 function spawnEnemy(userId) {
-  enemies.push(
-    new GameObject(
-      {
-        x: random(0, width),
-        y: random(0, height),
-      },
-      { radius: 10 },
-      { shape: 'circle', color: '#ffffff', id: userId }
-    )
+  const toBePushedEnemy = new GameObject(
+    {
+      x: random(0, width),
+      y: random(0, height),
+    },
+    { radius: 10 },
+    { shape: 'circle', color: '#ffffff', id: userId }
   )
+  toBePushedEnemy.id = userId
+
+  enemies.push(toBePushedEnemy)
 }
 
 /**
