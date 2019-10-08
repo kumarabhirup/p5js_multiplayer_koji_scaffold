@@ -15,7 +15,7 @@ let gameBeginning = false
 let gameStart = false // Becomes true after a moment when game initializes
 let canEnd = false
 
-let users
+let users = []
 
 // Effects
 let floatingTexts = []
