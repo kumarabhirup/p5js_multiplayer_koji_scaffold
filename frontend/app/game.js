@@ -124,6 +124,6 @@ function updateGameStatus() {
   textSize(txtSize)
   fill(Koji.config.colors.negativeFloatingTextColor)
   textAlign(RIGHT, TOP)
-  text(scoreText, x, y * 1.2)
+  text(scoreText, x, y * 1.3)
   pop()
 }
