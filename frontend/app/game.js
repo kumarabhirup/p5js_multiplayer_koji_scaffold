@@ -99,6 +99,8 @@ function updateGameStatus() {
   const x = width - objSize / 2
   const y = (objSize / 3) * 7
 
+  console.log(enemies, users)
+
   push()
   textSize(txtSize)
   fill(Koji.config.colors.scoreColor)
