@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
@@ -24,6 +25,9 @@ function gamePlay() {
   }
 
   // InGame UI
+  player.show()
+
+  updateGameStatus()
 
   // Game messages
   for (let i = 0; i < gameMessages.length; i += 1) {
@@ -55,4 +59,44 @@ function gamePlay() {
   }
 
   cleanup()
+}
+
+function updateGameStatus() {
+  const numOfPlayers = Object.keys(users).length
+
+  if (numOfPlayers <= 1) {
+    loadingAnimationTimer += 1 / 60
+
+    if (loadingAnimationTimer > 1) {
+      loadingAnimationTimer = 0
+    }
+
+    gameStatusText = 'Waiting for players'
+
+    // dat dot animation
+    if (loadingAnimationTimer > 0.3) {
+      gameStatusText += '.'
+    }
+
+    if (loadingAnimationTimer > 0.6) {
+      gameStatusText += '.'
+    }
+
+    if (loadingAnimationTimer > 0.9) {
+      gameStatusText += '.'
+    }
+  } else {
+    gameStatusText = roomName
+  }
+
+  const txtSize = objSize * 0.5
+  const x = width - objSize / 2
+  const y = (objSize / 3) * 7
+
+  push()
+  textSize(txtSize)
+  fill(Koji.config.colors.scoreColor)
+  textAlign(RIGHT, TOP)
+  text(gameStatusText, x, y)
+  pop()
 }

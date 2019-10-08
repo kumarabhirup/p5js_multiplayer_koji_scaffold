@@ -16,7 +16,7 @@
     "maxGameMessages": "10",
     "messageDuration": "2",
     "enableCursor": true,
-    "enableTimer": true,
+    "enableTimer": false,
     "gameTimer": "10",
     "playButtonText": "PLAY NOW",
     "leaderboardButtonText": "LEADERBOARD",

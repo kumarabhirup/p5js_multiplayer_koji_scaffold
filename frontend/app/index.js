@@ -21,6 +21,8 @@ let floatingTexts = []
 let particles = []
 
 // Game Objects (READ-ONLY)
+let player
+let enemies = []
 
 // Game Stuffs (READ-N-WRITE)
 
@@ -70,6 +72,8 @@ let startingGameTimer
 let gameTimer
 let gameTimerEnabled = false
 let gameOverRectangleHeight = 0 // for game over animation
+
+let loadingAnimationTimer = 0
 
 let canScore = false
 
@@ -144,7 +148,16 @@ function preload() {
 }
 
 // Instantiate objects here
-function instantiate() {}
+function instantiate() {
+  player = new GameObject(
+    {
+      x: 200,
+      y: 200,
+    },
+    { radius: 10 },
+    { shape: 'circle', color: '#ffffff' }
+  )
+}
 
 // Setup your props
 function setup() {
@@ -189,16 +202,12 @@ function setup() {
     )
 
   // Dispatch Events and Streamers
-  dispatch.on(dispatchEvent.CONNECTED, payload => {
-    // console.log(payload)
-  })
+  dispatch.on(dispatchEvent.CONNECTED, payload => {})
 
   dispatch.on(dispatchEvent.CONNECTED_CLIENTS_CHANGED, data => {
     // connectedClients is an object of the form { clientId: { userInfo } }
     users = data.connectedClients
     handleNewConnection()
-
-    // console.log(users)
   })
 
   /**
