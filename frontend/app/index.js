@@ -225,12 +225,12 @@ function setup() {
    * Handle disconnect if user exits the whole tab
    * Not working all the time currently
    */
-  window.addEventListener('beforeunload', event => {
-    if (dispatch) {
-      dispatch.disconnect()
-      console.log('Dispatch Disconnected')
-    }
-  })
+  // window.addEventListener('beforeunload', event => {
+  //   if (dispatch) {
+  //     dispatch.disconnect()
+  //     console.log('Dispatch Disconnected')
+  //   }
+  // })
 
   dispatch.connect()
 
