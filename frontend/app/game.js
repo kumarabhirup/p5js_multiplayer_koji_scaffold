@@ -111,8 +111,6 @@ function updateGameStatus() {
     scoreText = txt
   })()
 
-  // console.log(enemies, users)
-
   push()
   textSize(txtSize)
   fill(Koji.config.colors.scoreColor)
@@ -124,6 +122,6 @@ function updateGameStatus() {
   textSize(txtSize)
   fill(Koji.config.colors.negativeFloatingTextColor)
   textAlign(RIGHT, TOP)
-  text(scoreText, x, y * 1.2)
+  text(scoreText, x, y * 1.3)
   pop()
 }
