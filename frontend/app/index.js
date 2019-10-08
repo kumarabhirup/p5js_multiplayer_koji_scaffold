@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-empty */
@@ -14,7 +15,7 @@ let gameBeginning = false
 let gameStart = false // Becomes true after a moment when game initializes
 let canEnd = false
 
-let users = []
+let users
 
 // Effects
 let floatingTexts = []
@@ -155,7 +156,7 @@ function instantiate() {
       y: random(0, height),
     },
     { radius: 10 },
-    { shape: 'circle', color: '#ffff00' }
+    { shape: 'circle', color: '#ffff00', id: dispatch.clientId }
   )
 }
 
@@ -324,7 +325,6 @@ function handleNewConnection() {
     enemyIDs[i] = enemies[i].id
   }
 
-  // eslint-disable-next-line no-restricted-syntax
   for (let id in users) {
     if (id !== dispatch.clientId) {
       if (!enemyIDs.includes(id)) {
