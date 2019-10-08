@@ -541,6 +541,7 @@ function init() {
 
 function exit() {
   gameOver = true
+  dispatch.disconnect()
 
   if (score > parseInt(Koji.config.strings.minimumScoreToSave)) {
     submitScore(score)

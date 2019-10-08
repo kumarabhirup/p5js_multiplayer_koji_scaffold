@@ -41,7 +41,7 @@ class GameContainer extends Component {
 
     // eslint-disable-next-line no-global-assign
     dispatch = new Dispatch({
-      projectId: Koji.config.metadata.projectId,
+      // projectId: Koji.config.metadata.projectId,
       options: {
         shardName:
           roomName.toLowerCase() || Koji.config.strings.defaultRoomName, // the name of the shard you want to connect to. if this key is not present, the user will automatically be placed onto a shard
