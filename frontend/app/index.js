@@ -397,7 +397,7 @@ function cleanup() {
 
   // Clean Enemies
   for (let i = 0; i < enemies.length; i++) {
-    if (enemies[i].timer <= 0) {
+    if (enemies[i].removable) {
       enemies.splice(i, 1)
     }
   }
