@@ -354,16 +354,16 @@ function removeEmptyEnemies() {
 }
 
 function spawnEnemy(userId) {
-  let enemy = new GameObject(
-    {
-      x: random(0, width),
-      y: random(0, height),
-    },
-    { radius: 10 },
-    { shape: 'circle', color: '#ffffff', id: userId }
+  enemies.push(
+    new GameObject(
+      {
+        x: random(0, width),
+        y: random(0, height),
+      },
+      { radius: 10 },
+      { shape: 'circle', color: '#ffffff', id: userId }
+    )
   )
-
-  enemies.push(enemy)
 }
 
 /**

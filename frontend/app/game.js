@@ -75,7 +75,7 @@ function updateGameStatus() {
       loadingAnimationTimer = 0
     }
 
-    gameStatusText = 'Waiting for players'
+    gameStatusText = `Invite people to '${roomName}' room`
 
     // dat dot animation
     if (loadingAnimationTimer > 0.3) {
@@ -90,7 +90,7 @@ function updateGameStatus() {
       gameStatusText += '.'
     }
   } else {
-    gameStatusText = roomName
+    gameStatusText = `Game Room: ${roomName}`
   }
 
   const txtSize = objSize * 0.5
