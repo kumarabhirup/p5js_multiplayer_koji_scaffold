@@ -68,6 +68,7 @@ function gamePlay() {
 }
 
 function updateGameStatus() {
+  let scoreText
   const numOfPlayers = Object.keys(users).length
 
   if (numOfPlayers <= 1) {
@@ -99,7 +100,18 @@ function updateGameStatus() {
   const x = width - objSize / 2
   const y = (objSize / 3) * 7
 
-  console.log(enemies, users)
+  // Player Score Texts
+  ;(() => {
+    let txt = ''
+
+    for (let i = 0; i < enemies.length; i += 1) {
+      txt += `${enemies[i].name}: ${enemies[i].score}\n`
+    }
+
+    scoreText = txt
+  })()
+
+  // console.log(enemies, users)
 
   push()
   textSize(txtSize)
@@ -107,4 +119,23 @@ function updateGameStatus() {
   textAlign(RIGHT, TOP)
   text(gameStatusText, x, y)
   pop()
+
+  push()
+  textSize(txtSize)
+  fill(Koji.config.colors.negativeFloatingTextColor)
+  textAlign(RIGHT, TOP)
+  text(scoreText, x, y * 1.2)
+  pop()
+}
+
+function updateScores() {
+  let txt = ''
+
+  txt += `${dispatch.userInfo.playerName}: ${score}\n`
+
+  for (let i = 0; i < enemies.length; i += 1) {
+    txt += `${enemies[i].name}: ${enemies[i].score}\n`
+  }
+
+  scoreText = txt
 }
