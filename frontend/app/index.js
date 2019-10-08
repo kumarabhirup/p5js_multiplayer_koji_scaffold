@@ -210,53 +210,16 @@ function setup() {
     handleNewConnection()
   })
 
-  /**
-   * Example events
-   * @warning Examples are just to show the possibilities. Copy Pasting these examples may or may not work.
-   *
-   * @example
-   * dispatch.on('enemy_update', payload => {
-   *   for (let i = 0; i < enemies.length; i += 1) {
-   *     if (!enemies[i].eaten) {
-   *       if (enemies[i].id === payload.id) {
-   *         enemies[i].goalPos.x = payload.posX
-   *         enemies[i].goalPos.y = payload.posY
-   *         enemies[i].score = payload.score
-   *         enemies[i].name = payload.name
-   *         enemies[i].animTimer = 0
-   *         enemies[i].lastUpdateTimer = 0
-   *         enemies[i].size = payload.size
-   *
-   *         enemies[i].startPos.x = enemies[i].pos.x
-   *         enemies[i].startPos.y = enemies[i].pos.y
-   *         enemies[i].startPos.z = enemies[i].pos.z
-   *
-   *         if (!enemies[i].hasGreeted) {
-   *           enemies[i].greet()
-   *           enemies[i].img = imgPlayer[payload.imgIndex]
-   *         }
-   *       }
-   *     }
-   *   }
-   * })
-   *
-   * @example
-   * dispatch.on('player_eaten', payload => {
-   *   if (dispatch.clientId === payload.eatenID) {
-   *     player.eaten = true
-   *     canEnd = true
-   *     dispatch.disconnect()
-   *     console.log('You got eaten!')
-   *   }
-   *
-   *   let eatMessageType = eatMessages[floor(random() * eatMessages.length)]
-   *
-   *   spawnMessage(
-   *     `${payload.eatenName} ${eatMessageType} ${payload.eaterName}!`,
-   *     Koji.config.colors.playerEat
-   *   )
-   * })
-   */
+  dispatch.on('enemy_update', payload => {
+    enemies.forEach(enemy => {
+      if (enemy.id === payload.id) {
+        enemy.body.position.x = payload.posX
+        enemy.body.position.y = payload.posY
+        enemy.score = payload.score
+        enemy.name = payload.name
+      }
+    })
+  })
 
   /**
    * Handle disconnect if user exits the whole tab
@@ -340,70 +303,68 @@ function windowResized() {
  * All the code you see below is just for reference purposes which might not make sense in your game.
  */
 
-function manageData() {}
-function handleNewConnection() {}
+function manageData() {
+  try {
+    dispatch.emitEvent('enemy_update', {
+      id: dispatch.clientId,
+      name: dispatch.userInfo.playerName,
+      posX: Math.floor(player.body.position.x),
+      posY: Math.floor(player.body.position.y),
+      score,
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-// function manageData() {
-//   try {
-//     dispatch.emitEvent('enemy_update', {
-//       id: dispatch.clientId,
-//       name: dispatch.userInfo.playerName,
-//       posX: Math.floor(player.pos.x),
-//       posY: Math.floor(player.pos.y),
-//       velX: player.velocity.x,
-//       velY: player.velocity.y,
-//       size: player.size,
-//       score,
-//       imgIndex: imgPlayerIndex,
-//     })
-//   } catch (error) {
-//     // console.log(error)
-//   }
-// }
+function handleNewConnection() {
+  let enemyIDs = []
 
-// function handleNewConnection() {
-//   let enemyID = []
-//   for (let i = 0; i < enemies.length; i++) {
-//     enemyID[i] = enemies[i].id
-//   }
+  for (let i = 0; i < enemies.length; i++) {
+    enemyIDs[i] = enemies[i].id
+  }
 
-//   // eslint-disable-next-line no-restricted-syntax
-//   for (let id in users) {
-//     if (id !== dispatch.clientId) {
-//       if (!enemyID.includes(id)) {
-//         spawnEnemy(id)
-//       }
-//     }
-//   }
+  // eslint-disable-next-line no-restricted-syntax
+  for (let id in users) {
+    if (id !== dispatch.clientId) {
+      if (!enemyIDs.includes(id)) {
+        // spawnEnemy(id)
+      }
+    }
+  }
 
-//   removeEmptyEnemies()
-// }
+  removeEmptyEnemies()
+}
 
-// function removeEmptyEnemies() {
-//   for (let i = 0; i < enemies.length; i++) {
-//     let userExists = false
+function removeEmptyEnemies() {
+  for (let i = 0; i < enemies.length; i++) {
+    let userExists = false
 
-//     // eslint-disable-next-line no-restricted-syntax
-//     for (let user in users) {
-//       if (user == enemies[i].id) {
-//         userExists = true
-//       }
-//     }
+    // eslint-disable-next-line no-restricted-syntax
+    for (let user in users) {
+      if (user === enemies[i].id) {
+        userExists = true
+      }
+    }
 
-//     if (!userExists) {
-//       enemies[i].removable = true
-//     }
-//   }
-// }
+    if (!userExists) {
+      enemies[i].removable = true
+    }
+  }
+}
 
-// function spawnEnemy(id) {
-//   let enemy = new Enemy(
-//     random(-arenaSize / 2, arenaSize / 2),
-//     random(-arenaSize / 2, arenaSize / 2),
-//     id
-//   )
-//   enemies.push(enemy)
-// }
+function spawnEnemy(userId) {
+  let enemy = new GameObject(
+    {
+      x: random(0, width),
+      y: random(0, height),
+    },
+    { radius: 10 },
+    { shape: 'circle', color: '#ffffff', id: userId }
+  )
+
+  enemies.push(enemy)
+}
 
 /**
  * Go through objects and see which ones need to be removed

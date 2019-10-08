@@ -27,6 +27,10 @@ function gamePlay() {
   // InGame UI
   player.show()
 
+  enemies.forEach(enemy => {
+    enemy.show()
+  })
+
   updateGameStatus()
 
   // Game messages
