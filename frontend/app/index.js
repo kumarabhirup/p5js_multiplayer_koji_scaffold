@@ -151,11 +151,11 @@ function preload() {
 function instantiate() {
   player = new GameObject(
     {
-      x: 200,
-      y: 200,
+      x: random(0, width),
+      y: random(0, height),
     },
     { radius: 10 },
-    { shape: 'circle', color: '#ffffff' }
+    { shape: 'circle', color: '#ffff00' }
   )
 }
 

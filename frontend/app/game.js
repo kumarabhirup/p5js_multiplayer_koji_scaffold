@@ -127,15 +127,3 @@ function updateGameStatus() {
   text(scoreText, x, y * 1.2)
   pop()
 }
-
-function updateScores() {
-  let txt = ''
-
-  txt += `${dispatch.userInfo.playerName}: ${score}\n`
-
-  for (let i = 0; i < enemies.length; i += 1) {
-    txt += `${enemies[i].name}: ${enemies[i].score}\n`
-  }
-
-  scoreText = txt
-}
