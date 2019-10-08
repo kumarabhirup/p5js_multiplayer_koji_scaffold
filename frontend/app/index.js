@@ -328,7 +328,7 @@ function handleNewConnection() {
   for (let id in users) {
     if (id !== dispatch.clientId) {
       if (!enemyIDs.includes(id)) {
-        // spawnEnemy(id)
+        spawnEnemy(id)
       }
     }
   }
@@ -392,6 +392,13 @@ function cleanup() {
   for (let i = 0; i < particles.length; i++) {
     if (particles[i].timer <= 0) {
       particles.splice(i, 1)
+    }
+  }
+
+  // Clean Enemies
+  for (let i = 0; i < enemies.length; i++) {
+    if (enemies[i].timer <= 0) {
+      enemies.splice(i, 1)
     }
   }
 }

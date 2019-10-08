@@ -25,6 +25,8 @@ function gamePlay() {
   }
 
   // InGame UI
+  removeEmptyEnemies()
+
   player.show()
 
   enemies.forEach(enemy => {
@@ -77,7 +79,7 @@ function updateGameStatus() {
 
     gameStatusText = `Invite people to '${roomName}' room`
 
-    // dat dot animation
+    // dot-dot animation
     if (loadingAnimationTimer > 0.3) {
       gameStatusText += '.'
     }
