@@ -11,8 +11,8 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@withkoji/dispatch": "0.0.3",
-    "@withkoji/vcc": "^1.0.8",
+    "@withkoji/dispatch": "0.0.9",
+    "@withkoji/vcc": "^1.0.10",
     "babel-polyfill": "^6.26.0",
     "koji-react-leaderboard": "^0.0.4",
     "prop-types": "^15.7.2",
