@@ -234,3 +234,65 @@ class GameMessage {
     pop()
   }
 }
+
+// Emoji
+class Emoji {
+  constructor(x, y, size, txt) {
+    this.txt = txt
+
+    this.pressed = false
+
+    this.defaultSize = size
+    this.size = size
+
+    this.pos = createVector(x, y)
+
+    this.animTimer = 1
+  }
+
+  update() {
+    const animSpeed = 4
+    if (this.animTimer < 1) {
+      this.animTimer += (1 / frameRate()) * animSpeed
+    }
+
+    const sizeChange = objSize * 0.5
+    this.size = EaseNew(
+      EasingFunctions.outBack,
+      this.animTimer,
+      this.defaultSize + sizeChange,
+      -sizeChange,
+      animSpeed
+    )
+  }
+
+  activate() {
+    dispatch.emitEvent('chat_message', {
+      sender: dispatch.userInfo.playerName,
+      message: this.txt,
+    })
+
+    this.animTimer = 0
+  }
+
+  checkTouch() {
+    const mousePos = createVector(mouseX, mouseY)
+
+    if (this.pos.dist(mousePos) <= this.size / 2) {
+      return true
+    }
+
+    return false
+  }
+
+  render() {
+    push()
+    fill(Koji.config.colors.floatingTextColor)
+    noStroke()
+    textSize(this.size)
+    textAlign(CENTER, CENTER)
+    text(this.txt, this.pos.x, this.pos.y)
+
+    pop()
+  }
+}

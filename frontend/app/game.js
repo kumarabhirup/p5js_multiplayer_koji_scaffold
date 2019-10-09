@@ -24,6 +24,10 @@ function gamePlay() {
     drawTimer()
   }
 
+  if (emojiCooldown > 0) {
+    emojiCooldown -= 1 / frameRate()
+  }
+
   // InGame UI
   removeEmptyEnemies()
 
@@ -42,6 +46,11 @@ function gamePlay() {
     gameMessages[i].render()
 
     gameMessages[i].isFirst = i === 0
+  }
+
+  for (let i = 0; i < emojis.length; i += 1) {
+    emojis[i].update()
+    emojis[i].render()
   }
 
   // Score draw

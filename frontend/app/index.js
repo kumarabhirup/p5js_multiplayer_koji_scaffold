@@ -26,6 +26,8 @@ let player
 let enemies = []
 
 // Game Stuffs (READ-N-WRITE)
+let emojis = []
+let emojiCooldown = 0
 
 // Koji-Dispatch specific
 let dispatch
@@ -159,6 +161,15 @@ function instantiate() {
     { shape: 'circle', color: '#ffff00', id: dispatch.clientId }
   )
   player.id = dispatch.clientId
+
+  // Instantiate Emojis
+  for (let i = 0; i < Koji.config.strings.emojis.length; i++) {
+    let emojiSize = objSize * 2
+    let x = emojiSize * 1.2 * i + emojiSize
+    let y = height - objSize * 1.45
+
+    emojis[i] = new Emoji(x, y, emojiSize, Koji.config.strings.emojis[i])
+  }
 }
 
 // Setup your props
@@ -212,6 +223,7 @@ function setup() {
     handleNewConnection()
   })
 
+  // Enemy Update
   dispatch.on('enemy_update', payload => {
     enemies.forEach(enemy => {
       if (enemy.id === payload.id) {
@@ -223,16 +235,26 @@ function setup() {
     })
   })
 
+  // Chat listeners
+  dispatch.on('global_message', payload => {
+    spawnMessage(payload.message, payload.color)
+  })
+
+  dispatch.on('chat_message', payload => {
+    let txt = `${payload.sender}: ${payload.message}`
+    spawnMessage(txt, Koji.config.colors.floatingTextColor)
+  })
+
   /**
    * Handle disconnect if user exits the whole tab
    * Not working all the time currently
    */
-  // window.addEventListener('beforeunload', event => {
-  //   if (dispatch) {
-  //     dispatch.disconnect()
-  //     console.log('Dispatch Disconnected')
-  //   }
-  // })
+  window.addEventListener('beforeunload', event => {
+    if (dispatch) {
+      dispatch.disconnect()
+      console.log('Dispatch Disconnected')
+    }
+  })
 
   dispatch.connect()
 
@@ -434,6 +456,16 @@ function touchStarted() {
     // InGame
     touching = true
 
+    if (emojiCooldown <= 0) {
+      for (let i = 0; i < emojis.length; i++) {
+        if (emojis[i].checkTouch()) {
+          emojis[i].activate()
+          emojiCooldown = 0.2
+          break
+        }
+      }
+    }
+
     if (canEnd) {
       gameOver = true
 
@@ -517,6 +549,8 @@ function init() {
 
   floatingTexts = []
   particles = []
+  gameMessages = []
+  emojis = []
 
   // Keep everyone at their original place
   instantiate()
