@@ -28,14 +28,36 @@ function gamePlay() {
     emojiCooldown -= 1 / frameRate()
   }
 
+  if (touching) {
+    touchCurrentX = camera.mouseX
+    touchCurrentY = camera.mouseY
+  }
+
   // InGame UI
   removeEmptyEnemies()
+
+  camera.on()
 
   player.show()
 
   enemies.forEach(enemy => {
     enemy.show()
   })
+
+  if (cameraTarget) {
+    camera.position.x = Smooth(
+      camera.position.x,
+      cameraTarget.body.position.x,
+      8
+    )
+    camera.position.y = Smooth(
+      camera.position.y,
+      cameraTarget.body.position.y,
+      8
+    )
+  }
+
+  camera.off()
 
   updateGameStatus()
 

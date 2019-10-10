@@ -93,12 +93,21 @@ const gameSize = 18
 // Mobile
 let isMobile = false // check if it really is mobile
 let isMobileSize = false // check if the browser is mobile size
-let touching = false // Whether the user is currently touching/clicking
 
 // Multiplayer stuffs
 let gameStatusText = ''
 let roomName = ''
 let gameMessages = []
+
+// Camera stuffs
+let cameraTarget
+
+// Touch
+let touching = false // Whether the user is currently touching/clicking
+let touchStartX = 0
+let touchStartY = 0
+let touchCurrentX = 0
+let touchCurrentY = 0
 
 // Load assets
 function preload() {
@@ -540,6 +549,8 @@ function keyReleased() {
 function init() {
   gameOver = false
 
+  camera.zoom = 1
+
   lives = startingLives
   highscoreGained = false
   score = 0
@@ -554,6 +565,10 @@ function init() {
 
   // Keep everyone at their original place
   instantiate()
+
+  camera.position.x = player.body.position.x
+  camera.position.y = player.body.position.y
+  cameraTarget = player
 
   /**
    * In multiplayer games as of now,
