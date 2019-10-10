@@ -362,12 +362,10 @@ function handleNewConnection() {
     enemyIDs[i] = enemies[i].id
   }
 
-  for (let user of users) {
-    for (let id in users) {
-      if (id !== dispatch.clientId && user.playerName) {
-        if (!enemyIDs.includes(id)) {
-          spawnEnemy(id, users[id].playerName)
-        }
+  for (let id in users) {
+    if (id !== dispatch.clientId) {
+      if (!enemyIDs.includes(id) && users[id].playerName) {
+        spawnEnemy(id, users[id].playerName)
       }
     }
   }
@@ -392,18 +390,18 @@ function removeEmptyEnemies() {
   }
 }
 
-function spawnEnemy(userId) {
+function spawnEnemy(userId, playerName) {
   const toBePushedEnemy = new Player(
     {
       x: random(0, width),
       y: random(0, height),
     },
-    { radius: 10 },
+    { radius: 20 },
     {
       shape: 'circle',
       color: '#ffffff',
       id: userId,
-      playerName: 'Some Name',
+      playerName: playerName || 'Player',
     }
   )
   toBePushedEnemy.id = userId

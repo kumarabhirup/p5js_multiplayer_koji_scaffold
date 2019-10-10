@@ -138,7 +138,9 @@ function updateGameStatus() {
     let txt = ''
 
     for (let i = 0; i < enemies.length; i += 1) {
-      txt += `${enemies[i].name}: ${enemies[i].score}\n`
+      if(enemies[i].name) {
+        txt += `${enemies[i].name}: ${enemies[i].score}\n`
+      }
     }
 
     scoreText = txt
