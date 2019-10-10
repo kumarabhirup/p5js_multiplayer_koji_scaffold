@@ -578,6 +578,7 @@ function init() {
   users = []
 
   dispatch.disconnect()
+  dispatch.connect()
 
   // Keep everyone at their original place
   instantiate()
