@@ -391,13 +391,18 @@ function removeEmptyEnemies() {
 }
 
 function spawnEnemy(userId) {
-  const toBePushedEnemy = new GameObject(
+  const toBePushedEnemy = new Player(
     {
       x: random(0, width),
       y: random(0, height),
     },
     { radius: 10 },
-    { shape: 'circle', color: '#ffffff', id: userId }
+    {
+      shape: 'circle',
+      color: '#ffffff',
+      id: userId,
+      playerName: 'Some Name',
+    }
   )
   toBePushedEnemy.id = userId
 
