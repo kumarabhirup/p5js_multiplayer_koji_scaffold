@@ -362,10 +362,12 @@ function handleNewConnection() {
     enemyIDs[i] = enemies[i].id
   }
 
-  for (let id in users) {
-    if (id !== dispatch.clientId) {
-      if (!enemyIDs.includes(id)) {
-        spawnEnemy(id)
+  for (let user of users) {
+    for (let id in users) {
+      if (id !== dispatch.clientId && user.playerName) {
+        if (!enemyIDs.includes(id)) {
+          spawnEnemy(id, users[id].playerName)
+        }
       }
     }
   }
@@ -572,6 +574,10 @@ function init() {
   particles = []
   gameMessages = []
   emojis = []
+  enemies = []
+  users = []
+
+  dispatch.disconnect()
 
   // Keep everyone at their original place
   instantiate()
