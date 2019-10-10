@@ -161,13 +161,18 @@ function preload() {
 
 // Instantiate objects here
 function instantiate() {
-  player = new GameObject(
+  player = new Player(
     {
       x: random(0, width),
       y: random(0, height),
     },
-    { radius: 10 },
-    { shape: 'circle', color: '#ffff00', id: dispatch.clientId }
+    { radius: 20 },
+    {
+      shape: 'circle',
+      color: '#ffff00',
+      id: dispatch.clientId,
+      playerName: dispatch.userInfo.playerName,
+    }
   )
   player.id = dispatch.clientId
 
