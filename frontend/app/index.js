@@ -455,6 +455,7 @@ function loseLife() {
 
   if (lives <= 0) {
     gameOver = true
+    dispatch.disconnect()
     checkHighscore()
 
     if (score > parseInt(Koji.config.strings.minimumScoreToSave)) {
@@ -489,6 +490,7 @@ function touchStarted() {
 
     if (canEnd) {
       gameOver = true
+      dispatch.disconnect()
 
       if (score > parseInt(Koji.config.strings.minimumScoreToSave)) {
         submitScore(score)
