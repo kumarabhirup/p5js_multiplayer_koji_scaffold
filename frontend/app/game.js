@@ -90,7 +90,7 @@ function gamePlay() {
   for (let i = 0; i < lives; i += 1) {
     image(
       imgLife,
-      lifeSize / 2 + lifeSize * i,
+      lifeSize / 2 + lifeSize * i * 1.05,
       lifeSize / 2,
       lifeSize,
       lifeSize
