@@ -17,7 +17,7 @@
     "messageDuration": "2",
     "enableCursor": true,
     "enableTimer": true,
-    "gameTimer": "5",
+    "gameTimer": "90",
     "playButtonText": "PLAY NOW",
     "leaderboardButtonText": "LEADERBOARD",
     "endButtonText": "END GAME",
@@ -30,10 +30,10 @@
     "highscoreGainedText": "New High Score!",
     "trialTesting": true,
     "emojis": [
-      "😁",
-      "😅",
+      "😃",
+      "😠",
       "😎",
-      "😰",
+      "🤣",
       "👻"
     ]
   },
