@@ -18,12 +18,6 @@ function gamePlay() {
     }
   }
 
-  // Draw Timer! (Comment this blob of code if you don't want timer)
-  if (Koji.config.strings.enableTimer) {
-    gameTimer -= 1 / 60
-    drawTimer()
-  }
-
   if (emojiCooldown > 0) {
     emojiCooldown -= 1 / frameRate()
   }
@@ -75,6 +69,12 @@ function gamePlay() {
   for (let i = 0; i < emojis.length; i += 1) {
     emojis[i].update()
     emojis[i].render()
+  }
+
+  // Draw Timer! (Comment this blob of code if you don't want timer)
+  if (Koji.config.strings.enableTimer) {
+    gameTimer -= 1 / 60
+    drawTimer()
   }
 
   // Score draw
