@@ -161,6 +161,8 @@ function preload() {
 
 // Instantiate objects here
 function instantiate() {
+  window.setName(dispatch.userInfo.playerName)
+
   player = new Player(
     {
       x: random(0, width),

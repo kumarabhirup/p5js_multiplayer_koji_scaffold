@@ -12,11 +12,12 @@ import { SaveToLeaderboard } from 'koji-react-leaderboard'
 class SetScore extends Component {
   static propTypes = {
     score: PropTypes.number,
+    name: PropTypes.string,
   }
 
   state = {
     email: '',
-    name: '',
+    name: this.props.name,
     data: null,
   }
 

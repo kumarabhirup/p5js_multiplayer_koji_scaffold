@@ -10,6 +10,7 @@ import SetScore from './SetScore'
 export default class App extends Component {
   state = {
     score: 0,
+    name: 'Enter your Name',
     view: 'mainMenu',
   }
 
@@ -17,8 +18,13 @@ export default class App extends Component {
     window.setAppView = view => {
       this.setState({ view })
     }
+
     window.setScore = score => {
       this.setState({ score })
+    }
+
+    window.setName = name => {
+      this.setState({ name })
     }
   }
 
@@ -34,7 +40,7 @@ export default class App extends Component {
     if (this.state.view === 'setScore') {
       return (
         <div>
-          <SetScore score={this.state.score} />
+          <SetScore score={this.state.score} name={this.state.name} />
         </div>
       )
     }
