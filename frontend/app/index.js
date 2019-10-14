@@ -42,6 +42,7 @@ let leaderboardButton
 let endButton
 
 // Score data
+let lives
 let startingLives
 let scoreGain
 let highscoreGained
@@ -246,6 +247,7 @@ function setup() {
         enemy.body.position.x = payload.posX
         enemy.body.position.y = payload.posY
         enemy.score = payload.score
+        enemy.lives = payload.lives
         enemy.name = payload.name
       }
     })
@@ -351,6 +353,7 @@ function manageData() {
       posX: Math.floor(player.body.position.x),
       posY: Math.floor(player.body.position.y),
       score,
+      lives,
     })
   } catch (error) {
     console.log(error)
