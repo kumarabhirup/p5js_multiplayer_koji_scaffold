@@ -50,6 +50,28 @@ Few Koji Visual Customization Controls are already there for you to use. They we
 
 ## ☕ For developers
 
+### For using the `with-arena` branch
+
+> Note*: The with-arena branch has the arena with moving players. Also a character picker is made available in that branch.
+
+- Remix the p5.js Scaffold
+
+- Run the following commands in the terminal
+
+```bash
+$ git checkout with-arena
+$ git merge --strategy=ours master
+$ git checkout master
+$ git merge with-arena
+$ git commit -m "The Mega Merge"
+$ git branch -d with-arena
+$ git push origin master
+```
+
+- If something doesn't work after following these steps, kill all processes and do `$ npm i` in both the `frontend` and `backend` directories.
+
+- Then start both the containers again. Take a look at `package.json` to see what command starts the dev server.
+
 ### For setting scores, use the following code snippet 👇
 
 ```js
