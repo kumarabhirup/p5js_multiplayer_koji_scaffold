@@ -228,7 +228,7 @@
         "key": "mainMenuBackgroundSize",
         "name": "Main Menu Background Size",
         "description": "Empty for tiled background. Use CSS background-size properties only. Eg. cover",
-        "type": "image"
+        "type": "text"
       }
     ]
   }]
