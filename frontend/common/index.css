@@ -199,7 +199,6 @@ code {
 
   border: 0.5vmin solid white;
   border-radius: 1vmin;
-
 }
 
 .main-menu-button {
@@ -224,6 +223,7 @@ code {
   width: 20vmin;
   height: auto;
   margin: 1vmin;
+  zoom: 0.60;
 }
 
 #picker-menu {
