@@ -14,7 +14,7 @@ class CharacterPicker extends Component {
 
     this.state = {
       chosenImageLink: '',
-      chosenImageIndex: '',
+      chosenImageIndex: 0,
       images: [],
       font: 'Arial',
     }
@@ -71,8 +71,6 @@ class CharacterPicker extends Component {
   }
 
   render() {
-    const chosenID = this.state.chosenImageIndex
-
     return (
       <div
         id="picker-menu"
@@ -89,7 +87,7 @@ class CharacterPicker extends Component {
             margin: '1vmin',
           }}
         >
-          Choose your character:
+          Choose your character
         </div>
 
         <div className="picker-thumb-container">
@@ -101,7 +99,7 @@ class CharacterPicker extends Component {
               style={{
                 backgroundColor: `${Koji.config.colors.backgroundColor}`,
                 borderColor: `${Koji.config.colors.buttonColor}`,
-                opacity: chosenID === index ? 1 : 0.5,
+                opacity: this.state.chosenImageIndex === index ? 1 : 0.5,
               }}
               onClick={() => {
                 this.setState({ chosenImageIndex: index })

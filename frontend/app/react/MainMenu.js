@@ -163,6 +163,9 @@ class MainMenu extends Component {
           </div>
         </div>
 
+        <hr style={{ width: '75%', opacity: 0.15 }} />
+        <div style={{ clear: 'both' }} />
+
         <form className="main-menu-form" onSubmit={this.handleSubmit}>
           <div className="main-menu-input-wrapper">
             <div className="main-menu-field">

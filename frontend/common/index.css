@@ -141,7 +141,7 @@ code {
   zoom: 0.85;
   margin-top: -100px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-right: 1vmin;
   margin-left: 1vmin;
   flex-wrap: wrap;
