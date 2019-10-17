@@ -187,10 +187,10 @@ function instantiate() {
       x: random(-arenaSize / 2, arenaSize / 2),
       y: random(-arenaSize / 2, arenaSize / 2),
     },
-    { radius: 20 },
+    { radius: 30 },
     {
       shape: 'circle',
-      color: '#ffff00',
+      image: imgPlayer[imgPlayerIndex],
       id: dispatch.clientId,
       playerName: dispatch.userInfo.playerName,
     }
@@ -414,10 +414,10 @@ function spawnEnemy(userId, playerName) {
       x: random(-arenaSize / 2, arenaSize / 2),
       y: random(-arenaSize / 2, arenaSize / 2),
     },
-    { radius: 20 },
+    { radius: 30 },
     {
       shape: 'circle',
-      color: '#ffffff',
+      image: imgPlayer[imgPlayerIndex],
       id: userId,
       playerName: playerName || 'Player',
     }
