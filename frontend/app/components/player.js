@@ -16,6 +16,8 @@
 */
 
 class Player extends GameObject {
+  id = this.settings.id
+
   playerLabel = this.settings.playerName
 
   showPlayerName = () => {

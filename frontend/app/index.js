@@ -195,7 +195,6 @@ function instantiate() {
       playerName: dispatch.userInfo.playerName,
     }
   )
-  player.id = dispatch.clientId
 
   // Instantiate Emojis
   for (let i = 0; i < Koji.config.strings.emojis.length; i++) {
@@ -423,7 +422,6 @@ function spawnEnemy(userId, playerName) {
       playerName: playerName || 'Player',
     }
   )
-  toBePushedEnemy.id = userId
 
   enemies.push(toBePushedEnemy)
 }
