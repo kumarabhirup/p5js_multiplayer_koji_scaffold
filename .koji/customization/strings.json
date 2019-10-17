@@ -35,7 +35,8 @@
       "😎",
       "🤣",
       "👻"
-    ]
+    ],
+    "mainMenuBackgroundSize": ""
   },
   "@@editor": [{
     "key": "strings",
@@ -222,6 +223,12 @@
         "name": "High Score Gained Text",
         "description": "When you get a new high score",
         "type": "text"
+      },
+      {
+        "key": "mainMenuBackgroundSize",
+        "name": "Main Menu Background Size",
+        "description": "Empty for tiled background. Use CSS background-size properties only. Eg. cover",
+        "type": "image"
       }
     ]
   }]
