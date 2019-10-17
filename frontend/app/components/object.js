@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
-const { Bodies } = Matter
+const { Bodies, World } = Matter
 
 /**
  * @class GameObject
@@ -53,6 +53,12 @@ class GameObject {
     }
 
     // add body to some array or world -> World.add(world, this.body)
+    if (this.settings.shouldAddInWorld) World.add(world, this.body)
+
+    this.body.position = createVector(
+      this.body.position.x,
+      this.body.position.y
+    )
 
     // If the body is movable, save it to this.body for mouse constraint to understand.
     if (this.settings.movable) {
@@ -61,6 +67,8 @@ class GameObject {
       this.body.movable = false
     }
   }
+
+  rotateStartAt = 0
 
   /**
    * @description check for collision of this object to any other object
@@ -165,6 +173,7 @@ class GameObject {
       ? translate(this.settings.translateWithVector)
       : null
 
+    angleMode(DEGREES)
     this.settings.rotate ? rotate(angle) : null
 
     switch (this.settings.shape) {
@@ -219,8 +228,12 @@ class GameObject {
   }
 
   // Rotate the object
-  rotate(degrees = 0) {
-    this.body.angle = degrees
+  rotate(degrees, rotateSpeed = 0.1, mode = 'auto') {
+    const effectiveDegrees =
+      mode === 'degrees'
+        ? degrees
+        : (this.rotateStartAt = this.rotateStartAt + rotateSpeed)
+    this.body.angle = effectiveDegrees
   }
 
   // Use this for your destruction code -> eg. World.remove(world, this.body)

@@ -564,10 +564,38 @@ function keyPressed() {
   if (keyCode === ESCAPE) {
     exit()
   }
+
+  // Player movement on desktop
+  if (player) {
+    if (keyCode === RIGHT_ARROW || key === 'd') {
+      player.moveDir.x = 1
+    } else if (keyCode === LEFT_ARROW || key === 'a') {
+      player.moveDir.x = -1
+    }
+    if (keyCode === DOWN_ARROW || key === 's') {
+      player.moveDir.y = 1
+    } else if (keyCode === UP_ARROW || key === 'w') {
+      player.moveDir.y = -1
+    }
+  }
 }
 
 function keyReleased() {
   if (!gameOver && !gameBeginning) {
+    if (player) {
+      if ((keyCode === RIGHT_ARROW || key === 'd') && player.moveDir.x === 1) {
+        player.moveDir.x = 0
+      }
+      if ((keyCode === LEFT_ARROW || key === 'a') && player.moveDir.x === -1) {
+        player.moveDir.x = 0
+      }
+      if ((keyCode === DOWN_ARROW || key === 's') && player.moveDir.y === 1) {
+        player.moveDir.y = 0
+      }
+      if ((keyCode === UP_ARROW || key === 'w') && player.moveDir.y === -1) {
+        player.moveDir.y = 0
+      }
+    }
   }
 }
 
