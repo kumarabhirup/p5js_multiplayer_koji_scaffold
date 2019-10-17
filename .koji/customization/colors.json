@@ -1,6 +1,7 @@
 {
   "colors": {
     "backgroundColor": "#0a0a31",
+    "gameBorderColor": "#ffffff",
     "textColor": "#ffffff",
     "playButtonTextColor": "#0a0a31",
     "playButtonColor": "#ffda5a",
@@ -28,6 +29,11 @@
     "fields": [{
         "key": "backgroundColor",
         "name": "Background color",
+        "type": "color"
+      },
+      {
+        "key": "gameBorderColor",
+        "name": "Arena Border Color",
         "type": "color"
       },
       {

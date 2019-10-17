@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-use-before-define */
@@ -51,10 +52,13 @@ let score = 0
 
 // Data taken from Game Settings
 let comboTexts = []
+let arenaSize = 1000
 
 // Images
 let imgLife
 let imgBackground
+let imgPlayer = []
+let imgPlayerIndex = 0
 
 // Audio
 let sndMusic
@@ -83,6 +87,7 @@ let canScore = false
 
 // Size stuff
 let objSize // Base size modifier of all objects, calculated based on screen size
+let baseSize = 20
 
 /**
  * @description Game size in tiles
@@ -126,6 +131,16 @@ function preload() {
     imgBackground = loadImage(Koji.config.images.backgroundInGame)
   }
 
+  // Load player images from VCC
+  for (let i = 0; i < Koji.config.images.player.length; i++) {
+    imgPlayer[i] = loadImage(Koji.config.images.player[i])
+  }
+
+  // Get Player Index
+  if (localStorage.getItem('chosenImageIndex')) {
+    imgPlayerIndex = localStorage.getItem('chosenImageIndex')
+  }
+
   // Load images
   imgLife = loadImage(Koji.config.images.lifeIcon)
   soundImage = loadImage(Koji.config.images.soundImage)
@@ -149,6 +164,7 @@ function preload() {
   scoreGain = parseInt(Koji.config.strings.scoreGain)
   startingLives = parseInt(Koji.config.strings.lives)
   comboTexts = Koji.config.strings.comboText.split(',')
+  arenaSize = Koji.config.strings.arenaSize
   startingGameTimer = parseInt(Koji.config.strings.gameTimer)
   lives = startingLives
 

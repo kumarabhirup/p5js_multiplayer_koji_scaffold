@@ -27,6 +27,14 @@ function gamePlay() {
     touchCurrentY = camera.mouseY
   }
 
+  // Draw game border
+  push()
+  strokeWeight(objSize * 0.5)
+  stroke(Koji.config.colors.gameBorderColor)
+  noFill()
+  rect(-arenaSize / 2, -arenaSize / 2, arenaSize, arenaSize)
+  pop()
+
   // InGame UI
   removeEmptyEnemies()
 
