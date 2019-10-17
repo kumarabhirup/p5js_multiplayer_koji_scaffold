@@ -10,6 +10,14 @@
 
 import React, { Component } from 'react'
 
+export function getFontFamily(ff) {
+  const start = ff.indexOf('family=')
+  if (start === -1) return 'sans-serif'
+  let end = ff.indexOf('&', start)
+  if (end === -1) end = undefined
+  return ff.slice(start + 7, end)
+}
+
 class MainMenu extends Component {
   background = Koji.config.images.background
     ? `url(${Koji.config.images.background})`
@@ -28,14 +36,6 @@ class MainMenu extends Component {
   }
 
   componentDidMount() {
-    function getFontFamily(ff) {
-      const start = ff.indexOf('family=')
-      if (start === -1) return 'sans-serif'
-      let end = ff.indexOf('&', start)
-      if (end === -1) end = undefined
-      return ff.slice(start + 7, end)
-    }
-
     const link = document.createElement('link')
     link.href = Koji.config.strings.fontFamily
     link.rel = 'stylesheet'
