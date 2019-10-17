@@ -57,6 +57,7 @@ let arenaSize = 1000
 // Images
 let imgLife
 let imgBackground
+let imgArenaBackground
 let imgPlayer = []
 let imgPlayerIndex = 0
 
@@ -142,6 +143,7 @@ function preload() {
   }
 
   // Load images
+  imgArenaBackground = loadImage(Koji.config.images.backgroundInArena)
   imgLife = loadImage(Koji.config.images.lifeIcon)
   soundImage = loadImage(Koji.config.images.soundImage)
   muteImage = loadImage(Koji.config.images.muteImage)
@@ -315,11 +317,7 @@ function draw() {
   }
 
   // Draw background or a solid color
-  if (imgBackground) {
-    background(imgBackground)
-  } else {
-    background(Koji.config.colors.backgroundColor)
-  }
+  drawBackground()
 
   // Draw UI
   if (gameOver || gameBeginning) {

@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-useless-escape */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
@@ -9,6 +10,21 @@ function checkHighscore() {
     highscore = score
 
     localStorage.setItem('highscore', highscore)
+  }
+}
+
+// Used to draw the arena background
+function drawBackground() {
+  const bgSize = arenaSize / 15
+  const cells = arenaSize / bgSize
+
+  background(imgBackground || Koji.config.colors.backgroundColor)
+  for (let i = -cells / 2; i < cells / 2; i++) {
+    for (let j = -cells / 2; j < cells / 2; j++) {
+      push()
+      image(imgArenaBackground, i * bgSize, j * bgSize, bgSize, bgSize)
+      pop()
+    }
   }
 }
 
