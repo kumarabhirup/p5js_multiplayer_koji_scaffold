@@ -85,6 +85,15 @@ class GameObject {
       )
 
       this.body.position.add(this.velocity)
+
+      if (isMobile) {
+        if (touching) {
+          const touch = createVector(camera.mouseX, camera.mouseY)
+          this.moveDir = p5.Vector.sub(touch, this.body.position).normalize()
+        } else {
+          this.moveDir = createVector(0, 0)
+        }
+      }
     }
   }
 

@@ -17,6 +17,10 @@
   Smooth
   constrain
   arenaSize
+  isMobile
+  touching
+  p5
+  camera
 */
 
 class Player extends GameObject {
