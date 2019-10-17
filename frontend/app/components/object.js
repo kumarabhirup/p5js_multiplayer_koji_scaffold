@@ -24,6 +24,7 @@ class GameObject {
       color: { r: 0, g: 255, b: 255, a: 1 },
       rotate: true,
       movable: false,
+      movementVelocity: 5,
     } // shape can either be a circle or a rectangle
   ) {
     this.cordinates = cordinates
@@ -59,16 +60,33 @@ class GameObject {
       this.body.position.x,
       this.body.position.y
     )
-
-    // If the body is movable, save it to this.body for mouse constraint to understand.
-    if (this.settings.movable) {
-      this.body.movable = true
-    } else {
-      this.body.movable = false
-    }
   }
 
   rotateStartAt = 0
+
+  moveDir = createVector(0, 0)
+
+  velocity = createVector(0, 0)
+
+  maxVelocity = 5 || this.settings.movementVelocity
+
+  move() {
+    if (this.settings.movable) {
+      this.velocity.x = Smooth(
+        this.velocity.x,
+        this.moveDir.x * this.maxVelocity,
+        6
+      )
+
+      this.velocity.y = Smooth(
+        this.velocity.y,
+        this.moveDir.y * this.maxVelocity,
+        6
+      )
+
+      this.body.position.add(this.velocity)
+    }
+  }
 
   /**
    * @description check for collision of this object to any other object

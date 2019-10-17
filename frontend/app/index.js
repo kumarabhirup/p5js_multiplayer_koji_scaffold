@@ -193,6 +193,7 @@ function instantiate() {
       image: imgPlayer[imgPlayerIndex],
       id: dispatch.clientId,
       playerName: dispatch.userInfo.playerName,
+      movable: true,
     }
   )
 
@@ -420,6 +421,7 @@ function spawnEnemy(userId, playerName) {
       image: imgPlayer[imgPlayerIndex],
       id: userId,
       playerName: playerName || 'Player',
+      movable: true,
     }
   )
 

@@ -22,12 +22,6 @@ class Player extends GameObject {
 
   playerLabel = this.settings.playerName
 
-  moveDir = createVector(0, 0)
-
-  velocity = createVector(0, 0)
-
-  maxVelocity = 5
-
   showPlayerName = () => {
     push()
     fill(Koji.config.colors.negativeFloatingTextColor)
@@ -40,21 +34,5 @@ class Player extends GameObject {
       this.body.position.y - this.sizing.radius - 8
     )
     pop()
-  }
-
-  update() {
-    this.velocity.x = Smooth(
-      this.velocity.x,
-      this.moveDir.x * this.maxVelocity,
-      6
-    )
-
-    this.velocity.y = Smooth(
-      this.velocity.y,
-      this.moveDir.y * this.maxVelocity,
-      6
-    )
-
-    this.body.position.add(this.velocity)
   }
 }

@@ -41,7 +41,7 @@ function gamePlay() {
   camera.on()
 
   player.show()
-  player.update()
+  player.move()
   player.showPlayerName()
 
   enemies.forEach(enemy => {
