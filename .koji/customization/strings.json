@@ -20,6 +20,7 @@
     "gameTimer": "90",
     "playButtonText": "PLAY NOW",
     "leaderboardButtonText": "LEADERBOARD",
+    "changeCharacterText": "CHANGE CHARACTER",
     "endButtonText": "END GAME",
     "gameOverText": "GAME OVER",
     "gameStartedFloatingText": "Game started!",
@@ -175,6 +176,12 @@
         "key": "leaderboardButtonText",
         "name": "Leaderboard Button Text",
         "description": "Label on the Leaderboard Button",
+        "type": "text"
+      },
+      {
+        "key": "changeCharacterText",
+        "name": "Change Character",
+        "description": "Label on the Change Character Button",
         "type": "text"
       },
       {

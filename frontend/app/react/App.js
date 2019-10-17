@@ -6,6 +6,7 @@ import GameContainer from './GameContainer'
 import MainMenu from './MainMenu'
 import Leaderboard from './Leaderboard'
 import SetScore from './SetScore'
+import CharacterPicker from './CharacterPicker'
 
 export default class App extends Component {
   state = {
@@ -49,6 +50,14 @@ export default class App extends Component {
       return (
         <div>
           <Leaderboard />
+        </div>
+      )
+    }
+
+    if (this.state.view === 'characterPicker') {
+      return (
+        <div>
+          <CharacterPicker />
         </div>
       )
     }
