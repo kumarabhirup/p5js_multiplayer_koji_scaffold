@@ -12,6 +12,7 @@
     "defaultPlayerName": "Kumar Abhirup",
     "maxConnectionsPerShard": "2",
     "lives": "3",
+    "arenaSize": 3000,
     "minimumScoreToSave": "1",
     "maxGameMessages": "10",
     "messageDuration": "2",
@@ -109,6 +110,17 @@
         "name": "Starting Lives",
         "description": "How many lives you initially have",
         "type": "text"
+      },
+      {
+        "key": "arenaSize",
+        "name": "Arena Size",
+        "description": "How big is the playable arena?",
+        "type": "range",
+        "typeOptions": {
+          "min": 500,
+          "max": 15000,
+          "step": 1
+        }
       },
       {
         "key": "minimumScoreToSave",

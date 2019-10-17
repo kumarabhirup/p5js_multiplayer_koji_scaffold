@@ -182,8 +182,8 @@ function instantiate() {
 
   player = new Player(
     {
-      x: random(0, width),
-      y: random(0, height),
+      x: random(-arenaSize / 2, arenaSize / 2),
+      y: random(-arenaSize / 2, arenaSize / 2),
     },
     { radius: 20 },
     {
@@ -414,8 +414,8 @@ function removeEmptyEnemies() {
 function spawnEnemy(userId, playerName) {
   const toBePushedEnemy = new Player(
     {
-      x: random(0, width),
-      y: random(0, height),
+      x: random(-arenaSize / 2, arenaSize / 2),
+      y: random(-arenaSize / 2, arenaSize / 2),
     },
     { radius: 20 },
     {
