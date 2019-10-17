@@ -15,6 +15,8 @@
   noStroke
   createVector
   Smooth
+  constrain
+  arenaSize
 */
 
 class Player extends GameObject {
@@ -34,5 +36,21 @@ class Player extends GameObject {
       this.body.position.y - this.sizing.radius - 8
     )
     pop()
+  }
+
+  update() {
+    this.move()
+
+    // Don't let the player run out
+    this.body.position.x = constrain(
+      this.body.position.x,
+      -arenaSize / 2,
+      arenaSize / 2
+    )
+    this.body.position.y = constrain(
+      this.body.position.y,
+      -arenaSize / 2,
+      arenaSize / 2
+    )
   }
 }
