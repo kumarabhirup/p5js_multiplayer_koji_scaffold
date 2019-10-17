@@ -5,6 +5,7 @@
     "lifeIcon": "https://i.imgur.com/39e9e4h.png",
     "background": "",
     "backgroundInGame": "",
+    "backgroundInArena": "https://i.imgur.com/eFeNNrY.png",
     "player": [
       "https://i.imgur.com/7AbkzUr.png",
       "https://i.imgur.com/C2OJL80.png",
@@ -52,6 +53,12 @@
         "key": "backgroundInGame",
         "name": "Background for Gaming Screen",
         "description": "Leave empty if you want to use a solid color. Ideal size: any, but keep in mind it could deform based on screen size",
+        "type": "image"
+      },
+      {
+        "key": "backgroundInArena",
+        "name": "Background Texture of Arena",
+        "description": "Use a texture so that movement can be understood.",
         "type": "image"
       },
       {
